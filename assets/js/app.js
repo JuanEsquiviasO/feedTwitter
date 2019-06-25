@@ -2,14 +2,17 @@ const listaTweets = document.getElementById('lista-tweets')
 
 
 
-
 // Event Listeners
 eventListeners()
 
 function eventListeners() {
 
 	document.querySelector('#formulario').addEventListener('submit', agregarTweet)
+	// Delete tweets
+	listaTweets.addEventListener('click', borrarTweet);
 }
+
+
 
 
 // Functions
@@ -31,4 +34,12 @@ function agregarTweet(e) {
 	li.appendChild(botonBorrar)
 	// Add the tweet into the list
 	listaTweets.appendChild(li)
+}
+
+function borrarTweet(e) {
+	e.preventDefault()
+	if(e.target.className === 'borrar-tweet') {
+		console.log(e.target.parentElement.remove() )
+		alert('Tweet eliminated')
+	}
 }
